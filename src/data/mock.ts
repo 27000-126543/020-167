@@ -28,6 +28,28 @@ export interface ExtraItem {
   category: "film" | "anesthesia" | "material_upgrade" | "other"
 }
 
+export interface InstallmentInfo {
+  depositAmount: number
+  remainingAmount: number
+  nextVisitDate: string
+}
+
+export interface CashierRecord {
+  id: string
+  patient: Patient
+  package: TreatmentPackage
+  extraItems: ExtraItem[]
+  paymentMethod: string
+  discountSource: string
+  discountAmount: number
+  totalAmount: number
+  actualAmount: number
+  installmentInfo?: InstallmentInfo
+  remark: string
+  paymentTime: string
+  status: "paid"
+}
+
 export interface VisitRecord {
   patient: Patient
   package: TreatmentPackage

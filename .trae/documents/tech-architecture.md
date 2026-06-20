@@ -70,16 +70,41 @@ interface DiscountSource {
   label: string
 }
 
+interface InstallmentInfo {
+  depositAmount: number
+  remainingAmount: number
+  nextVisitDate: string
+}
+
+interface CashierRecord {
+  id: string
+  patient: Patient
+  package: TreatmentPackage
+  extraItems: ExtraItem[]
+  paymentMethod: string
+  discountSource: string
+  discountAmount: number
+  totalAmount: number
+  actualAmount: number
+  installmentInfo?: InstallmentInfo
+  remark: string
+  paymentTime: string
+  status: "paid"
+}
+
 interface ReceiptData {
   patient: Patient
   package: TreatmentPackage
   extraItems: ExtraItem[]
-  paymentMethod: PaymentMethod
-  discountSource: DiscountSource
+  paymentMethod: string
+  discountSource: string
   discountAmount: number
   totalAmount: number
   actualAmount: number
+  installmentInfo?: InstallmentInfo
   remark: string
+  paymentTime?: string
+  status: "pending" | "paid"
 }
 ```
 
